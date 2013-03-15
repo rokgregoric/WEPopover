@@ -54,10 +54,16 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	[self.popoverController dismissPopoverAnimated:NO];
+    [self dismissPopover];
+}
+
+- (void)dismissPopover
+{
+    [self.popoverController dismissPopoverAnimated:NO];
 	self.popoverController = nil;
 }
 
@@ -70,19 +76,18 @@
 	} else {
 		UIViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
 		
-		self.popoverController = [[[WEPopoverController alloc] initWithContentViewController:contentViewController] autorelease];
+		self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
 		[self.popoverController presentPopoverFromRect:button.frame 
 												inView:self.view 
 							  permittedArrowDirections:UIPopoverArrowDirectionDown
 											  animated:YES];
-		[contentViewController release];
 		[button setTitle:@"Hide Popover" forState:UIControlStateNormal];
 	}
 }
 
-- (void)dealloc {
-	[self viewDidUnload];
-    [super dealloc];
+- (void)dealloc
+{
+	[self dismissPopover];
 }
 
 @end
