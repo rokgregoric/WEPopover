@@ -134,7 +134,13 @@
 	}
 	
 	CGRect displayArea = [self displayAreaForView:theView];
-	
+
+	displayArea.origin.x += 20;
+	displayArea.origin.y += 46;
+
+	displayArea.size.width -= 40;
+	displayArea.size.height = 366;
+
 	WEPopoverContainerViewProperties *props = self.containerViewProperties ? self.containerViewProperties : [self defaultContainerViewProperties];
 	WEPopoverContainerView *containerView = [[WEPopoverContainerView alloc] initWithSize:self.popoverContentSize anchorRect:rect displayArea:displayArea permittedArrowDirections:arrowDirections properties:props];
 	popoverArrowDirection = containerView.arrowDirection;
@@ -175,7 +181,7 @@
         
         [UIView animateWithDuration:FADE_DURATION
                               delay:0.0
-                            options:UIViewAnimationCurveLinear
+                            options:UIViewAnimationOptionCurveLinear
                          animations:^{
                              
                              self.view.alpha = 1.0;
@@ -300,7 +306,7 @@
             
             [UIView animateWithDuration:FADE_DURATION
                                   delay:0.0
-                                options:UIViewAnimationCurveLinear
+                                options:UIViewAnimationOptionCurveLinear
                              animations:^{
                                  
                                  self.view.alpha = 0.0;
