@@ -139,7 +139,7 @@
 	displayArea.origin.y += 46;
 
 	displayArea.size.width -= 20;
-	displayArea.size.height = 368;
+	displayArea.size.height = 452;
 
 	WEPopoverContainerViewProperties *props = self.containerViewProperties ? self.containerViewProperties : [self defaultContainerViewProperties];
 	WEPopoverContainerView *containerView = [[WEPopoverContainerView alloc] initWithSize:self.popoverContentSize anchorRect:rect displayArea:displayArea permittedArrowDirections:arrowDirections properties:props];
