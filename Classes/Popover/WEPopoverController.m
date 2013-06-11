@@ -118,12 +118,18 @@
 	return [self presentPopoverFromRect:rect inView:v permittedArrowDirections:arrowDirections animated:animated];
 }
 
+- (void)presentPopoverFromRect:(CGRect)rect
+						inView:(UIView *)theView
+	  permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections
+					  animated:(BOOL)animated {
+	[self presentPopoverFromRect:rect inView:theView permittedArrowDirections:arrowDirections animated:animated height:452];
+}
+
 - (void)presentPopoverFromRect:(CGRect)rect 
 						inView:(UIView *)theView 
 	  permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections 
-					  animated:(BOOL)animated {
-	
-	
+					  animated:(BOOL)animated
+						height:(CGFloat)height {
 	[self dismissPopoverAnimated:NO];
 	
 	//First force a load view for the contentViewController so the popoverContentSize is properly initialized
@@ -139,7 +145,7 @@
 	displayArea.origin.y += 46;
 
 	displayArea.size.width -= 20;
-	displayArea.size.height = 452;
+	displayArea.size.height = height;
 
 	WEPopoverContainerViewProperties *props = self.containerViewProperties ? self.containerViewProperties : [self defaultContainerViewProperties];
 	WEPopoverContainerView *containerView = [[WEPopoverContainerView alloc] initWithSize:self.popoverContentSize anchorRect:rect displayArea:displayArea permittedArrowDirections:arrowDirections properties:props];

@@ -72,4 +72,10 @@
 		 permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections
                          animated:(BOOL)animated;
 
+- (void)presentPopoverFromRect:(CGRect)rect
+						inView:(UIView *)theView
+	  permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections
+					  animated:(BOOL)animated
+						height:(CGFloat)height;
+
 @end
